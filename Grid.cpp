@@ -42,12 +42,12 @@ void Grid::setGridValue(string grid_value)
 }
 void Grid::displayQuestion()
 {
-    cout << Question << "?\n";
+    cout << question << "?\n";
 
 }
 void Grid::displayAnswer()
 {
-    cout << answers << endl;
+    cout << answer << endl;
 
 }
 bool Grid::checkAnswer()
