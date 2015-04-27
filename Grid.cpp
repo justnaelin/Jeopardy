@@ -7,6 +7,7 @@
 //compiler: CB 13.12
 //****************************************************
 //
+#include "Contestant.h"
 #include <cassert>
 
 using namespace std;
@@ -52,8 +53,8 @@ void Grid::displayAnswer()
 }
 bool Grid::checkAnswer()
 {
-    assert(getContestantAnswer() != "") // not sure if the getContestant method will work
-    if(getContestantAnswer() == answers) // I need to see in which class the getContestantAnswer() is
+    assert(Contestant::getContestantAnswer() != "") // not sure if the getContestant method will work
+    if(Contestant::getContestantAnswer() == answers) // I need to see in which class the getContestantAnswer() is
         return true
     return false
 };
