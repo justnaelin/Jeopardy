@@ -13,7 +13,6 @@ class Contestant
     private:
         int score,
             wager;
-        string contestant_answer;
     public:
         Contestant();
         int getScore()const {return score;}
@@ -22,7 +21,6 @@ class Contestant
         void setWager(int wager);
         void addScore(int score);
         void deductScore();
-        string getContestantAnswer()const {return contestant_answer;}
 };
 
 #endif // CONTESTANT_H_INCLUDED
