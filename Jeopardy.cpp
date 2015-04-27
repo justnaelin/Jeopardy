@@ -7,7 +7,9 @@
 
 #include "Jeopardy.h"
 #include "Grid.h"
-
+#include <cassert>
+#include <iostream>
+using namespace std;
 
 Jeopardy::Jeopardy()
 {
@@ -57,6 +59,8 @@ void Jeopardy::displayBoard()
 void Jeopardy::displayGameOver()
 {
     cout << "GAME OVER\n";
+    int id = whoWon();
+    displayWinner(id);
     displayBoard();
 }
 bool Jeopardy::isGameOver()
@@ -69,12 +73,17 @@ bool Jeopardy::isGameOver()
                 return false;
     return true;
 }
-bool Jeopardy::whoWon()
+int Jeopardy::whoWon()
 {
     if(isGameOver)
     {
-        // TODO: Compare player's individual scores
+        // Compare player's individual scores
+        int highest_score = 0;
+        for(int i = 1; i < 3; i++)
+            if(Jeopardy::scoreboard[i] > Jeopardy::scoreboard[highest_score])
+                highest_score = i;
     }
+    return highest_score;
 }
 void Jeopardy::checkEndGame()
 {
@@ -91,4 +100,15 @@ void Jeopardy::runGame()
         board[row][column].setGridValue("X");
         board[row][column].displayQuestion();
     } while(true);
+}
+void Jeopardy::displayWinner(int id)
+{
+    assert(id < 3);
+    cout << "Player " << (id + 1) << endl;
+}
+
+void static Jeopardy::addToScoreboard(Contestant player)
+{
+    assert(player.getId() >= 0 || player.getId() < 3);
+    Jeopardy::scoreboard[player.getId()] += player.getScore();
 }

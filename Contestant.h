@@ -12,13 +12,18 @@ class Contestant
 {
     private:
         int score,
-            wager;
+            wager,
+            id;
+        string contestant_answer;
+
     public:
         Contestant();
         int getScore()const {return score;}
         int getWager()const {return wager;}
+        int getId()const {return id;}
         void setScore(int score);
         void setWager(int wager);
+        void setId(int id);
         void addScore(int score);
         void deductScore();
 };
