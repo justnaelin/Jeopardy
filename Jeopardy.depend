@@ -1,0 +1,30 @@
+# depslib dependency file v1.0
+1430151224 source:/home/miriam/Jeopardy/Contestant.cpp
+	"Contestant.h"
+	<iostream>
+	<cassert>
+
+1430151089 /home/miriam/Jeopardy/Contestant.h
+	<string>
+
+1430151609 source:/home/miriam/Jeopardy/Grid.cpp
+	"Grid.h"
+	"Contestant.h"
+	<iostream>
+	<cassert>
+
+1430151598 /home/miriam/Jeopardy/Grid.h
+	<string>
+	"Contestant.h"
+
+1430159525 source:/home/miriam/Jeopardy/Jeopardy.cpp
+	"Jeopardy.h"
+	"Grid.h"
+	<cassert>
+	<iostream>
+	<string>
+
+1430154290 /home/miriam/Jeopardy/Jeopardy.h
+	"Grid.h"
+	"Contestant.h"
+

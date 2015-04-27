@@ -7,21 +7,24 @@
 //compiler: CB 13.12
 //****************************************************
 //
+
+#include "Grid.h"
 #include "Contestant.h"
+#include <iostream>
 #include <cassert>
 
 using namespace std;
 
- Gird::Grid()
+ Grid::Grid()
  {
     question = "";
-    answers = "";
+    answer = "";
     grid_value = "";
  }
 bool Grid::isQuestionChosen()
 {
     assert(grid_value == "X");
-    return true
+    return true;
 
 }
 void Grid::setQuestion(string question)
@@ -32,13 +35,13 @@ void Grid::setQuestion(string question)
 }
 void Grid::setAnswer(string answer)
 {
-    assert(answers != "");
+    assert(answer != "");
     this -> question = question;
 
 }
 void Grid::setGridValue(string grid_value)
 {
-    assert(grid_Value != "");
+    assert(grid_value != "");
     this -> grid_value = grid_value;
 }
 void Grid::displayQuestion()
@@ -51,10 +54,10 @@ void Grid::displayAnswer()
     cout << answer << endl;
 
 }
-bool Grid::checkAnswer()
+bool Grid::checkAnswer(Contestant player)
 {
-    assert(Contestant::getContestantAnswer() != "") // not sure if the getContestant method will work
-    if(Contestant::getContestantAnswer() == answers) // I need to see in which class the getContestantAnswer() is
-        return true
-    return false
+    assert(player.getContestantsAnswer() != ""); // not sure if the getContestant method will work
+    if(player.getContestantsAnswer() == answer); // I need to see in which class the getContestantAnswer() is
+        return true;
+    return false;
 };

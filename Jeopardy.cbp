@@ -31,6 +31,13 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="Contestant.cpp" />
+		<Unit filename="Contestant.h" />
+		<Unit filename="Grid.cpp" />
+		<Unit filename="Grid.h" />
+		<Unit filename="Jeopardy.cpp" />
+		<Unit filename="Jeopardy.h" />
+		<Unit filename="category1.txt" />
 		<Extensions>
 			<code_completion />
 			<debugger />

@@ -8,6 +8,9 @@
 // Last modified:
 //************************************************************************
 
+#include <string>
+#include "Contestant.h"
+using namespace std;
 class Grid
 {
     private:
@@ -105,11 +108,12 @@ class Grid
         //
         //******************************************************
         //******************************************************
-        bool checkAnswer();
+        bool checkAnswer(Contestant player);
         //Summary: the following methods compares the value of
         // the member variable answer with the constentast input
         //preconditon: both the answers and the constestants
-        // input cannot be empty strings
+        // input cannot be empty strings and there is a and object
+        // of type constestant being passed in
         //poscondition:returns true if the memember variable
         // and the contenstants' input are the same, otherwise
         //return false

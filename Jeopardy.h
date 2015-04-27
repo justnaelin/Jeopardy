@@ -16,7 +16,7 @@ class Jeopardy
     private:
         Grid board[6][5];
         Contestant player1, player2, player3;
-        static scoreboard[3];
+        static int scoreboard[3];
         int row, // The row the player picks
             col; // The column the player picks
 
@@ -25,7 +25,7 @@ class Jeopardy
         void displayBoard();
         void displayGameOver();
         bool isGameOver();
-        bool whoWon();
+        int whoWon();
         bool checkEndGame();
         void runGame();
 
@@ -48,6 +48,5 @@ class Jeopardy
 
 };
 
-scoreboard = {0, 0, 0};
 
 #endif // JEOPARDY_H_INCLUDED

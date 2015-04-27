@@ -9,15 +9,21 @@
 #include "Grid.h"
 #include <cassert>
 #include <iostream>
+#include <string>
+
 using namespace std;
+
+ int Jeopardy::scoreboard[3] = {0, 0, 0};
 
 Jeopardy::Jeopardy()
 {
     // Initialize top row of Jeopardy grid to numbers 1-5
     // to represent categories
-    for(i = 0; i < 1; i++)
+    for(int i = 0; i < 1; i++)
         for(int j = 0; j < 5; j++)
-            board[i][j].setGridValue(to_string(j + 1));
+                board[i][j].setGridValue(to_string(j+1));
+
+
     // Initialize Jeopardy grid to point values
     for(int i = 1; i < 6; i++)
     {
@@ -75,30 +81,31 @@ bool Jeopardy::isGameOver()
 }
 int Jeopardy::whoWon()
 {
-    if(isGameOver)
+    int highest_score = 0;
+    if(isGameOver())
     {
         // Compare player's individual scores
-        int highest_score = 0;
         for(int i = 1; i < 3; i++)
             if(Jeopardy::scoreboard[i] > Jeopardy::scoreboard[highest_score])
                 highest_score = i;
     }
     return highest_score;
 }
-void Jeopardy::checkEndGame()
+bool Jeopardy::checkEndGame()
 {
     if(isGameOver())
         exit(0);
 }
 void Jeopardy::runGame()
 {
+
     do
     {
         displayBoard();
         cout << "Select a row and column: \n";
-        cin >> row >> column;
-        board[row][column].setGridValue("X");
-        board[row][column].displayQuestion();
+        cin >> row >> col;
+        board[row][col].setGridValue("X");
+        board[row][col].displayQuestion();
     } while(true);
 }
 void Jeopardy::displayWinner(int id)
@@ -106,8 +113,7 @@ void Jeopardy::displayWinner(int id)
     assert(id < 3);
     cout << "Player " << (id + 1) << endl;
 }
-
-void static Jeopardy::addToScoreboard(Contestant player)
+void Jeopardy::addToScoreboard(Contestant player)
 {
     assert(player.getId() >= 0 || player.getId() < 3);
     Jeopardy::scoreboard[player.getId()] += player.getScore();

@@ -8,6 +8,9 @@
 // Last modified:
 //************************************************************************
 
+#include <string>
+using namespace std;
+
 class Contestant
 {
     private:
@@ -26,6 +29,8 @@ class Contestant
         void setId(int id);
         void addScore(int score);
         void deductScore();
+        string getContestantsAnswer() const {return contestant_answer;}
+        string setContestantAnswer(string contestant_answer);
 };
 
 #endif // CONTESTANT_H_INCLUDED
