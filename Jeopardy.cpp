@@ -131,7 +131,7 @@ void Jeopardy::initGrid()
                 if(j == 0)
                 {
                     question_file.open("Category1.txt");
-                    answer_file.open("Category1answers.txt");
+                    answer_file.open("Category1Answers.txt");
 
                     question_file >> x;
                     answer_file >> y;
@@ -141,7 +141,7 @@ void Jeopardy::initGrid()
                 if(j == 1)
                 {
                     question_file.open("Category2.txt");
-                    answer_file.open("Category2answers.txt");
+                    answer_file.open("Category2Answers.txt");
 
                     question_file >> x;
                     answer_file >> y;
@@ -151,7 +151,7 @@ void Jeopardy::initGrid()
                 if(j == 2)
                 {
                     question_file.open("Category3.txt");
-                    answer_file.open("Category3answers.txt");
+                    answer_file.open("Category3Answers.txt");
 
                     question_file >> x;
                     answer_file >> y;
@@ -161,7 +161,7 @@ void Jeopardy::initGrid()
                 if(j == 3)
                 {
                     question_file.open("Category4.txt");
-                    answer_file.open("Category4answers.txt");
+                    answer_file.open("Category4Answers.txt");
 
                     question_file >> x;
                     answer_file >> y;
@@ -171,7 +171,7 @@ void Jeopardy::initGrid()
                 if(j == 4)
                 {
                     question_file.open("Category5.txt");
-                    answer_file.open("Category5answers.txt");
+                    answer_file.open("Category5Answers.txt");
 
                     question_file >> x;
                     answer_file >> y;
