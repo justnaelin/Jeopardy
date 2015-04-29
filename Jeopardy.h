@@ -19,6 +19,7 @@ class Jeopardy
         static int scoreboard[3];
         int row, // The row the player picks
             col; // The column the player picks
+        void initGrid();
 
     public:
         Jeopardy();

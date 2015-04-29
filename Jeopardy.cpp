@@ -10,10 +10,10 @@
 #include <cassert>
 #include <iostream>
 #include <string>
-
+#include <fstream>
 using namespace std;
 
- int Jeopardy::scoreboard[3] = {0, 0, 0};
+int Jeopardy::scoreboard[3] = {0, 0, 0};
 
 Jeopardy::Jeopardy()
 {
@@ -22,7 +22,6 @@ Jeopardy::Jeopardy()
     for(int i = 0; i < 1; i++)
         for(int j = 0; j < 5; j++)
                 board[i][j].setGridValue(to_string(j+1));
-
 
     // Initialize Jeopardy grid to point values
     for(int i = 1; i < 6; i++)
@@ -41,11 +40,10 @@ Jeopardy::Jeopardy()
                 board[i][j].setGridValue("1000");
         }
     }
-    // TODO: Initialize questions & answers
 
     // Initialize row and column
     row = 1;
-    col = 0;
+    col = 1;
 }
 void Jeopardy::displayBoard()
 {
@@ -71,7 +69,7 @@ void Jeopardy::displayGameOver()
 }
 bool Jeopardy::isGameOver()
 {
-    for(int i = 0; i < 6; i++)
+    for(int i = 1; i < 6; i++)
         for(int j = 0; j < 6; j++)
             // If all questions have been chosen, the game is over
             // Otherwise, game is still going on
@@ -98,7 +96,7 @@ bool Jeopardy::checkEndGame()
 }
 void Jeopardy::runGame()
 {
-
+    initGrid();
     do
     {
         displayBoard();
@@ -117,4 +115,70 @@ void Jeopardy::addToScoreboard(Contestant player)
 {
     assert(player.getId() >= 0 || player.getId() < 3);
     Jeopardy::scoreboard[player.getId()] += player.getScore();
+}
+void Jeopardy::initGrid()
+{
+    // Initialize questions & answers
+    ifstream question_file, answer_file;
+    string x, y;
+
+    while(!question_file.eof())
+    {
+        for(int i = 1; i < 6; i++)
+        {
+            for(int j = 0; j < 5; j++)
+            {
+                if(j == 0)
+                {
+                    question_file.open("Category1.txt");
+                    answer_file.open("Category1answers.txt");
+
+                    question_file >> x;
+                    answer_file >> y;
+                    board[j][i].setQuestion(x);
+                    board[j][i].setAnswer(y);
+                }
+                if(j == 1)
+                {
+                    question_file.open("Category2.txt");
+                    answer_file.open("Category2answers.txt");
+
+                    question_file >> x;
+                    answer_file >> y;
+                    board[j][i].setQuestion(x);
+                    board[j][i].setAnswer(y);
+                }
+                if(j == 2)
+                {
+                    question_file.open("Category3.txt");
+                    answer_file.open("Category3answers.txt");
+
+                    question_file >> x;
+                    answer_file >> y;
+                    board[j][i].setQuestion(x);
+                    board[j][i].setAnswer(y);
+                }
+                if(j == 3)
+                {
+                    question_file.open("Category4.txt");
+                    answer_file.open("Category4answers.txt");
+
+                    question_file >> x;
+                    answer_file >> y;
+                    board[j][i].setQuestion(x);
+                    board[j][i].setAnswer(y);
+                }
+                if(j == 4)
+                {
+                    question_file.open("Category5.txt");
+                    answer_file.open("Category5answers.txt");
+
+                    question_file >> x;
+                    answer_file >> y;
+                    board[j][i].setQuestion(x);
+                    board[j][i].setAnswer(y);
+                }
+            }
+        }
+    }
 }
