@@ -37,6 +37,7 @@
 		<Unit filename="Grid.h" />
 		<Unit filename="Jeopardy.cpp" />
 		<Unit filename="Jeopardy.h" />
+		<Unit filename="JeopardyDriver.cpp" />
 		<Unit filename="category1.txt" />
 		<Extensions>
 			<code_completion />

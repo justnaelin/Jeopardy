@@ -26,14 +26,23 @@ class Jeopardy
         bool isGameOver();
         void whoWon();
         bool checkEndGame();
+<<<<<<< HEAD
         void runGame(Contestant player);
 
+=======
+        void runGame();
+>>>>>>> d0c14e002d59524727da4126529a84c11e27104b
         // Summary: Runs the game
         // Preconditions: Grid is initialized
         // Postconditions:
         //************************************************************************
+<<<<<<< HEAD
         //***********,*************************************************************
         static void addToScoreboard(Contestant player);
+=======
+        //************************************************************************
+        static void addToScoreboard(Contestant player, int grid_point_value);
+>>>>>>> d0c14e002d59524727da4126529a84c11e27104b
         // Summary: Gets player's score and adds it to the scoreboard array
         // Preconditions:
         // Postconditions: Score is added at player's index
@@ -44,7 +53,11 @@ class Jeopardy
         // Preconditions:
         // Postconditions:
         //************************************************************************
+<<<<<<< HEAD
         void whosIsPlaying();
+=======
+        Contestant whichContestant();
+>>>>>>> d0c14e002d59524727da4126529a84c11e27104b
 
 };
 
