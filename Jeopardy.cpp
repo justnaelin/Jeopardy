@@ -69,11 +69,9 @@ void Jeopardy::displayBoard()
 void Jeopardy::displayGameOver()
 {
     cout << "GAME OVER\n";
-<<<<<<< HEAD
     displayBoard();
-=======
     whoWon();
->>>>>>> d0c14e002d59524727da4126529a84c11e27104b
+
 }
 bool Jeopardy::isGameOver()
 {
@@ -88,7 +86,6 @@ bool Jeopardy::isGameOver()
 void Jeopardy::whoWon()
 {
     int highest_score = 0;
-<<<<<<< HEAD
     if(isGameOver())
     {
         // Compare player's individual scores
@@ -96,7 +93,6 @@ void Jeopardy::whoWon()
             if(Jeopardy::scoreboard[i] > Jeopardy::scoreboard[highest_score])
                 highest_score = i;
     }
-=======
     // Compare player's individual scores
     for(int i = 1; i < 3; i++)
         if(Jeopardy::scoreboard[i] > Jeopardy::scoreboard[highest_score])
@@ -109,22 +105,19 @@ void Jeopardy::whoWon()
     else if(highest_score == 2)
         cout << "Player 3 Wins!\n";
 
->>>>>>> d0c14e002d59524727da4126529a84c11e27104b
 }
 bool Jeopardy::checkEndGame()
 {
     if(isGameOver())
         exit(0);
 }
-<<<<<<< HEAD
 void Jeopardy::runGame(Contestant player)
 {
     int grid_points;
     int row,
         col;
     string contestant_answer;
-    //initGrid();
-=======
+
 /*void Jeopardy::runGame()
 {
     int grid_points;
@@ -164,7 +157,7 @@ void Jeopardy::displayWinner(int id)
     } while(true);
 }*/
 /*void Jeopardy::displayWinner(int id)
->>>>>>> d0c14e002d59524727da4126529a84c11e27104b
+
 {
     assert(id < 3);
     cout << "Player " << (id + 1) << endl;

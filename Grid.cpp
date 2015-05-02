@@ -35,13 +35,11 @@ void Grid::setQuestion(string question)
 }
 void Grid::setAnswer(string answer)
 {
-<<<<<<< HEAD
     //assert(answer != "");
     this -> question = question;
-=======
+
     assert(answer != "");
     this-> question = question;
->>>>>>> d0c14e002d59524727da4126529a84c11e27104b
 
 }
 void Grid::setGridValue(string grid_value)

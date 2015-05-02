@@ -36,7 +36,7 @@ void Contestant::setWager(int wager)
     assert(wager <= score || wager >= 0);
     this->wager = wager;
 }
-<<<<<<< HEAD
+
 void Contestant::setCol(int col)
 {
     this -> col = col;
@@ -48,14 +48,12 @@ void Contestant::setRow(int row)
 
 }
 void Contestant::addScore(Contestant player,int score)
-=======
 void Contestant::setId(int id)
 {
     assert(id >= 0 || id < 3);
     this->id = id;
 }
 void Contestant::addScore(int grid_points)
->>>>>>> d0c14e002d59524727da4126529a84c11e27104b
 {
     //TODO: where is score going to get points from
     score += grid_points;
