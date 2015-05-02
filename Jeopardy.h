@@ -17,8 +17,6 @@ class Jeopardy
         Grid board[6][5];
         Contestant player1, player2, player3;
         static int scoreboard[3];
-        int row, // The row the player picks
-            col; // The column the player picks
         void initGrid();
 
     public:
@@ -26,15 +24,15 @@ class Jeopardy
         void displayBoard();
         void displayGameOver();
         bool isGameOver();
-        int whoWon();
+        void whoWon();
         bool checkEndGame();
-        void runGame();
+        void runGame(Contestant player);
 
         // Summary: Runs the game
         // Preconditions: Grid is initialized
         // Postconditions:
         //************************************************************************
-        //************************************************************************
+        //***********,*************************************************************
         static void addToScoreboard(Contestant player);
         // Summary: Gets player's score and adds it to the scoreboard array
         // Preconditions:
@@ -46,6 +44,7 @@ class Jeopardy
         // Preconditions:
         // Postconditions:
         //************************************************************************
+        void whosIsPlaying();
 
 };
 

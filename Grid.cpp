@@ -29,13 +29,13 @@ bool Grid::isQuestionChosen()
 }
 void Grid::setQuestion(string question)
 {
-    assert(question != "");
+    //assert(question != "");
     this -> question = question;
 
 }
 void Grid::setAnswer(string answer)
 {
-    assert(answer != "");
+    //assert(answer != "");
     this -> question = question;
 
 }
@@ -56,8 +56,8 @@ void Grid::displayAnswer()
 }
 bool Grid::checkAnswer(Contestant player)
 {
-    assert(player.getContestantsAnswer() != ""); // not sure if the getContestant method will work
-    if(player.getContestantsAnswer() == answer); // I need to see in which class the getContestantAnswer() is
+    assert(player.getContestantAnswer() != ""); // not sure if the getContestant method will work
+    if(player.getContestantAnswer() == answer); // I need to see in which class the getContestantAnswer() is
         return true;
     return false;
 };
