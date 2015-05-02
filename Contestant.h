@@ -27,7 +27,7 @@ class Contestant
         void setScore(int score);
         void setWager(int wager);
         void setId(int id);
-        void addScore(int score);
+        void addScore(int grid_points);
         void deductScore();
         string getContestantsAnswer() const {return contestant_answer;}
         string setContestantAnswer(string contestant_answer);

@@ -36,23 +36,21 @@ void Grid::setQuestion(string question)
 void Grid::setAnswer(string answer)
 {
     assert(answer != "");
-    this -> question = question;
+    this-> question = question;
 
 }
 void Grid::setGridValue(string grid_value)
 {
     assert(grid_value != "");
-    this -> grid_value = grid_value;
+    this-> grid_value = grid_value;
 }
 void Grid::displayQuestion()
 {
     cout << question << "?\n";
-
 }
 void Grid::displayAnswer()
 {
     cout << answer << endl;
-
 }
 bool Grid::checkAnswer(Contestant player)
 {
