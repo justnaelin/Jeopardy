@@ -1,12 +1,10 @@
-//****************************************************
-//File Name:
-//
-//Summary:
-//Modification:
-//Author: Miriam Flores
-//compiler: CB 13.12
-//****************************************************
-//
+//************************************************************************
+// Filename: JeopardyDriver.cpp
+// Description:
+// Author: Naelin Aquino & Miriam Flores
+// Last modified:
+//************************************************************************
+
 
 #include "Jeopardy.h"
 #include <iostream>

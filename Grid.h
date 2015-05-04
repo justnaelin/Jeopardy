@@ -4,129 +4,111 @@
 //************************************************************************
 // Class name: Grid
 // Description:
-// Authors: Naelin Aquino, Miriam Flores, Bianca Hernandez
+// Authors: Naelin Aquino & Miriam Flores
 // Last modified:
 //************************************************************************
 
 #include <string>
 #include "Contestant.h"
 using namespace std;
+
 class Grid
 {
     private:
         string question,
                answer,
                grid_value;
-
     public:
-
-        //******************************************************
+        //************************************************************************
         Grid();
-        //Summary: initializes the question, answer and  grid
-        //to empty strings
-        //preconditon: ---
-        //poscondition: question, answer and grid_vale
+        // Summary: initializes the question, answer and grid
+        // to empty strings
+        // Preconditons: ---
+        // Posconditions: question, answer, and grid_value
         // are empty strings
-        //
-        //******************************************************
-
-         //******************************************************
+        //************************************************************************
+        //************************************************************************
         bool isQuestionChosen();
-        //Summary: checks whether the question has been
-        //assigned. return false if the question is has not
-        //been use and true if it has been assigned to another
-        //grid.
-        //preconditon: ----
-        //poscondition: return false if the question is has not
-        //been use and true if it has been assigned to another
-        //grid.
-        //
-        //******************************************************
-
-         //******************************************************
+        // Summary: checks whether the question has been
+        // assigned. return false if the question is has not
+        // been use and true if it has been assigned to another
+        // grid.
+        // Preconditions: ----
+        // Posconditions: return false if the question is has not
+        // been use and true if it has been assigned to another
+        // grid.
+        //************************************************************************
+        //************************************************************************
         void setQuestion(string question);
-         //Summary: it sets a question into the member variable
-         // Question
-        //preconditon: The sring being passed in cannot be
+        // Summary:it sets a question into the member variable
+        // question
+        // Preconditions: The sring being passed in cannot be
         // an empty string
-        //poscondition: the member variable question gets a
+        // Postconditions: the member variable question gets a
         // string value
-        //
-        //******************************************************
-         //******************************************************
+        //************************************************************************
+        //************************************************************************
         void setAnswer(string answer);
-         //Summary:it sets a answers into the member variable
-         // answers
-        //preconditon:The sring being passed in cannot be
+        //Summary:it sets a answers into the member variable
+        // answers
+        // Preconditions:The sring being passed in cannot be
         // an empty string
-        //poscondition:the member variable answersgets a
+        // Posrconditions:the member variable answersgets a
         // string value
-        //
-        //******************************************************
-
-         //******************************************************
+        //************************************************************************
+        //************************************************************************
         string getQuestion()const {return question;}
-         //Summary: returns the value stored in the member
-         // variable question
-        //preconditon: ---
-        //poscondition: ---
-        //
-        //******************************************************
-
-         //******************************************************
+        // Summary: returns the value stored in the member
+        // variable question
+        // Preconditions: ---
+        // Posrconditions: ---
+        //************************************************************************
+        //************************************************************************
         string getAnswer()const {return answer;}
-         //Summary:returns the value stored in the member
-         // variable answers
-        //preconditon: ---
-        //poscondition: ---
-        //
-        //******************************************************
-         //******************************************************
+        //Summary: returns the value stored in the member
+        // variable answers
+        // Preconditions: ---
+        // Posconditions: ---
+        //************************************************************************
+        //************************************************************************
         void setGridValue(string grid_value);
-         //Summary: it sets a given value into the member variable
-         // grid_value
-        //preconditon: grid_value cannot be an empty string
-        //poscondition: the class  member variable grid_value
+        //Summary: it sets a given value into the member variable
+        // grid_value
+        // Preconditions: grid_value cannot be an empty string
+        // Posconditions: the class  member variable grid_value
         // is set to the value of grid_value
-        //
-        //******************************************************
-         //******************************************************
+        //************************************************************************
+        //************************************************************************
         void displayQuestion();
-         //Summary: it displays the value stored in the member
-         // varible questions
-        //preconditon: the member variable has been initialized
-        //poscondition: a question is display
-        //
-        //******************************************************
-
-        //******************************************************
+        //Summary: it displays the value stored in the member
+        // varible questions
+        // Precondituons: the member variable has been initialized
+        // Postconditions: a question is display
+        //************************************************************************
+        //************************************************************************
         void displayAnswer();
-        //Summary:it displays the value stored in the member
-         // varible answers
-        //preconditon:the member variable has been initialized
-        //poscondition: the answer is display
-        //
-        //******************************************************
-        //******************************************************
+        // Summary:it displays the value stored in the member
+        // varible answers
+        // Preconditions:the member variable has been initialized
+        // Posconditions: the answer is display
+        //************************************************************************
+        //************************************************************************
         bool checkAnswer(string contestant_answer);
-        //Summary: the following methods compares the value of
+        // Summary: Compares the value of
         // the member variable answer with the constentast input
-        //preconditon: both the answers and the constestants
+        // Preconditions: both the answers and the constestants
         // input cannot be empty strings and there is a and object
         // of type constestant being passed in
-        //poscondition:returns true if the memember variable
+        // Posconditions:returns true if the memember variable
         // and the contenstants' input are the same, otherwise
-        //return false
-        //******************************************************
-        //******************************************************
+        // return false
+        //************************************************************************
+        //************************************************************************
         string getGridValue() const {return grid_value;}
-        //Summary: returns the value in the grid_value member
+        // Summary: returns the value in the grid_value member
         // variable
-        //Postcondition: it has been initialized
-        //Precondition: returns grid_value
-        //
-        //******************************************************
-
+        // Postconditions: it has been initialized
+        // Preconditions: returns grid_value
+        //************************************************************************
 };
-
 #endif // GRID_H_INCLUDED

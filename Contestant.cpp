@@ -1,7 +1,7 @@
 //************************************************************************
-// Filename: .cpp
+// Filename: Contestant.cpp
 // Description:
-// Author: Naelin Aquino
+// Author: Naelin Aquino, Miriam Flores, & Bianca Hernandez
 // Last modified:
 //************************************************************************
 
@@ -12,7 +12,6 @@
 
 Contestant::Contestant()
 {
-    //default score
     score = 0;
     wager = 0;
     id = 0;
@@ -29,16 +28,11 @@ Contestant::Contestant(int id)
     row = 1;
     col = 0;
 }
-void Contestant::setScore(int score)
-{
-    this->score = score;
-}
 void Contestant::setWager(int wager)
 {
     assert(wager <= score || wager >= 0);
     this->wager = wager;
 }
-
 void Contestant::setCol(int col)
 {
     this->col = col;
@@ -51,15 +45,6 @@ void Contestant::setId(int id)
 {
     assert(id >= 0 || id < 3);
     this->id = id;
-}
-void Contestant::addScore(int grid_points)
-{
-    //TODO: where is score going to get points from
-    score += grid_points;
-}
-void Contestant::deductScore()
-{
-    //TODO: where is score going to get points from
 }
 void Contestant::setContestantAnswer(string contestant_answer)
 {
