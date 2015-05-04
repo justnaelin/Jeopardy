@@ -29,17 +29,13 @@ bool Grid::isQuestionChosen()
 }
 void Grid::setQuestion(string question)
 {
-    //assert(question != "");
-    this -> question = question;
-
+    assert(question != "");
+    this-> question = question;
 }
 void Grid::setAnswer(string answer)
 {
-    //assert(answer != "");
-    this -> question = question;
-
     assert(answer != "");
-    this-> question = question;
+    this->answer = answer;
 
 }
 void Grid::setGridValue(string grid_value)
@@ -55,10 +51,11 @@ void Grid::displayAnswer()
 {
     cout << answer << endl;
 }
-bool Grid::checkAnswer(Contestant player)
+bool Grid::checkAnswer(string contestant_answer)
 {
-    assert(player.getContestantAnswer() != ""); // not sure if the getContestant method will work
-    if(player.getContestantAnswer() == answer); // I need to see in which class the getContestantAnswer() is
+    assert(contestant_answer != ""); // not sure if the getContestant method will work
+    if(contestant_answer == answer) // I need to see in which class the getContestantAnswer() is
         return true;
-    return false;
+    else
+        return false;
 };

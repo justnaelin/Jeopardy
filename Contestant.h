@@ -35,10 +35,11 @@ class Contestant
         void setScore(int score);
         void setWager(int wager);
         void setId(int id);
-        void addScore(Contestant player,int score);
+        //void addScore(Contestant player,int score);
         void addScore(int grid_points);
+        void deductScore();
         string getContestantAnswer() const {return contestant_answer;}
-        string setContestantAnswer(string contestant_answer);
+        void setContestantAnswer(string contestant_answer);
 };
 
 #endif // CONTESTANT_H_INCLUDED

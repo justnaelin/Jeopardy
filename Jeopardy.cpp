@@ -17,6 +17,9 @@ int Jeopardy::scoreboard[3] = {0, 0, 0};
 
 Jeopardy::Jeopardy()
 {
+    player1.setId(0);
+    player2.setId(1);
+    player3.setId(2);
     // Initialize top row of Jeopardy grid to numbers 1-5
     // to represent categories
     for(int i = 0; i < 1; i++)
@@ -40,38 +43,34 @@ Jeopardy::Jeopardy()
                 board[i][j].setGridValue("1000");
         }
     }
-
 }
 void Jeopardy::displayBoard()
 {
     // TODO: Replace with actual category names
-<<<<<<< HEAD
-    cout << "1 - Category #1\n"
-         << "2 - Category #2\n"
-         << "3 - Category #3\n"
-         << "4 - Category #4\n"
-         << "5 - Category #5\n";
-    for(int i = 1; i < 6; i++)
-=======
+    cout << "======Scoreboard======\n";
+    cout << "P1: " << scoreboard[0] << '\t' << "P2: " << scoreboard[1] << '\t' << "P3: " << scoreboard[2] << endl;
+    cout << "======================\n";
+
     cout << "1 - Songs\n"
          << "2 - Disney\n"
          << "3 - Harry Potter\n"
          << "4 - Musicals\n"
          << "5 - Greek Mythology\n";
+    cout << endl;
+
     for(int i = 0; i < 6; i++)
->>>>>>> d0c14e002d59524727da4126529a84c11e27104b
     {
         for(int j = 0; j < 5; j++)
              cout << board[i][j].getGridValue() << '\t';
         cout << endl;
     }
+    cout << endl;
 }
 void Jeopardy::displayGameOver()
 {
     cout << "GAME OVER\n";
     displayBoard();
     whoWon();
-
 }
 bool Jeopardy::isGameOver()
 {
@@ -86,13 +85,6 @@ bool Jeopardy::isGameOver()
 void Jeopardy::whoWon()
 {
     int highest_score = 0;
-    if(isGameOver())
-    {
-        // Compare player's individual scores
-        for(int i = 1; i < 3; i++)
-            if(Jeopardy::scoreboard[i] > Jeopardy::scoreboard[highest_score])
-                highest_score = i;
-    }
     // Compare player's individual scores
     for(int i = 1; i < 3; i++)
         if(Jeopardy::scoreboard[i] > Jeopardy::scoreboard[highest_score])
@@ -113,55 +105,37 @@ bool Jeopardy::checkEndGame()
 }
 void Jeopardy::runGame(Contestant player)
 {
-    int grid_points;
+    int grid_point_value;
     int row,
         col;
     string contestant_answer;
 
-/*void Jeopardy::runGame()
-{
-    int grid_points;
-    initGrid();
->>>>>>> d0c14e002d59524727da4126529a84c11e27104b
     do
     {
         displayBoard();
         cout << "Select a row and column: \n";
         cin >> row >> col;
-<<<<<<< HEAD
+        cin.ignore();
+
         player.setRow(row);
         player.setCol(col);
-        grid_points = stoi(board[player.getRow()][player.getCol()].getGridValue());
+        grid_point_value = stoi(board[player.getRow()][player.getCol()].getGridValue());
         board[player.getRow()][player.getCol()].setGridValue("X");
         board[player.getRow()][player.getCol()].displayQuestion();
+
         cout << "Enter your answer: \n";
-        cin >> contestant_answer;
+        getline(cin, contestant_answer);
         player.setContestantAnswer(contestant_answer);
-        if(board[player.getRow()][player.getCol()].checkAnswer(player))
-            addToScoreboard(player, grid_points);
+        if(board[player.getRow()][player.getCol()].checkAnswer(player.getContestantAnswer()))
+        {
+            addToScoreboard(player, grid_point_value);
+        }
+        else
+            cout << "Wrong\n";
 
-    } while(board[player.row][player.col].checkAnswer(player));
+
+    } while(board[player.getRow()][player.getCol()].checkAnswer(player.getContestantAnswer()));
 }
-void Jeopardy::displayWinner(int id)
-=======
-        grid_points = stoi(board[row][col].getGridValue());
-        board[row][col].setGridValue("X");
-        board[row][col].displayQuestion();
-        cout << "Enter your answer: \n";
-        cin >> contestant_answer;
-        setContestantAnswer(contestant_answer);
-        if(checkAnswer())
-            addScore(grid_points);
-
-
-    } while(true);
-}*/
-/*void Jeopardy::displayWinner(int id)
-
-{
-    assert(id < 3);
-    cout << "Player " << (id + 1) << endl;
-}*/
 void Jeopardy::addToScoreboard(Contestant player, int grid_point_value)
 {
     Jeopardy::scoreboard[player.getId()] += grid_point_value;
@@ -172,80 +146,82 @@ void Jeopardy::initGrid()
     ifstream question_file, answer_file;
     string x, y;
 
-    while(!question_file.eof())
-    {
-        for(int i = 1; i < 6; i++)
+        for(int i = 0; i < 5; i++)
         {
-            for(int j = 0; j < 5; j++)
+            if(i == 0)
             {
-                if(j == 0)
-                {
-                    question_file.open("Category1.txt");
-                    answer_file.open("Category1Answers.txt");
+                question_file.open("Category1.txt");
+                answer_file.open("Category1Answers.txt");
 
-                    question_file >> x;
-                    answer_file >> y;
-                    board[j][i].setQuestion(x);
-                    board[j][i].setAnswer(y);
-                }
-                if(j == 1)
+                for(int j = 1; j < 6; j++)
                 {
-                    question_file.open("Category2.txt");
-                    answer_file.open("Category2Answers.txt");
-
-                    question_file >> x;
-                    answer_file >> y;
+                    getline(question_file, x);
                     board[j][i].setQuestion(x);
-                    board[j][i].setAnswer(y);
-                }
-                if(j == 2)
-                {
-                    question_file.open("Category3.txt");
-                    answer_file.open("Category3Answers.txt");
-
-                    question_file >> x;
-                    answer_file >> y;
-                    board[j][i].setQuestion(x);
-                    board[j][i].setAnswer(y);
-                }
-                if(j == 3)
-                {
-                    question_file.open("Category4.txt");
-                    answer_file.open("Category4Answers.txt");
-
-                    question_file >> x;
-                    answer_file >> y;
-                    board[j][i].setQuestion(x);
-                    board[j][i].setAnswer(y);
-                }
-                if(j == 4)
-                {
-                    question_file.open("Category5.txt");
-                    answer_file.open("Category5Answers.txt");
-
-                    question_file >> x;
-                    answer_file >> y;
-                    board[j][i].setQuestion(x);
+                    getline(answer_file, y);
                     board[j][i].setAnswer(y);
                 }
             }
+            if(i == 1)
+            {
+                question_file.open("Category2.txt");
+                answer_file.open("Category2Answers.txt");
+
+                for(int j = 1; j < 6; j++)
+                {
+                    getline(question_file, x);
+                    board[j][i].setQuestion(x);
+                    getline(answer_file, y);
+                    board[j][i].setAnswer(y);
+                }
+            }
+            if(i == 2)
+            {
+                question_file.open("Category3.txt");
+                answer_file.open("Category3Answers.txt");
+                for(int j = 1; j< 6;j++)
+                {
+
+                    getline(question_file, x);
+                    board[j][i].setQuestion(x);
+                    getline(answer_file, y);
+                    board[j][i].setAnswer(y);
+                }
+            }
+            if(i == 3)
+            {
+                question_file.open("Category4.txt");
+                answer_file.open("Category4Answers.txt");
+                for(int j =1; j < 6; j++)
+                {
+                    getline(question_file, x);
+                    board[j][i].setQuestion(x);
+                    getline(answer_file, y);
+                    board[j][i].setAnswer(y);
+                }
+            }
+            if(i == 4)
+            {
+                question_file.open("Category5.txt");
+                answer_file.open("Category5Answers.txt");
+                for(int j = 1; j < 6; j++)
+                {
+                    getline(question_file, x);
+                    board[j][i].setQuestion(x);
+                    getline(answer_file, y);
+                    board[j][i].setAnswer(y);
+                }
+            }
+            }
         }
-    }
-}
-void Jeopardy::WhoIsPlaying()
+void Jeopardy::startGame()
 {
+    initGrid();
+
     do
     {
-
         runGame(player1);
         runGame(player2);
         runGame(player3);
 
-
-
     }while(!isGameOver());
-
-
-
-
 }

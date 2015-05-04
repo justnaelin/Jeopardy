@@ -108,7 +108,7 @@ class Grid
         //
         //******************************************************
         //******************************************************
-        bool checkAnswer(Contestant player);
+        bool checkAnswer(string contestant_answer);
         //Summary: the following methods compares the value of
         // the member variable answer with the constentast input
         //preconditon: both the answers and the constestants

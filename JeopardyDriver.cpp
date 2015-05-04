@@ -14,10 +14,7 @@ using namespace std;
 
 int main()
 {
-
     Jeopardy game1;
-    game1.runGame();
+    game1.startGame();
     return 0;
-
-
 }
