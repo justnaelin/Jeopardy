@@ -17,11 +17,13 @@ Grid::Grid()
     question = "";
     answer = "";
     grid_value = "";
+    is_double = false;
 }
 bool Grid::isQuestionChosen()
 {
-    assert(grid_value == "X");
-    return true;
+    if(grid_value == "X")
+        return true;
+    return false;
 }
 void Grid::setQuestion(string question)
 {
@@ -52,4 +54,8 @@ bool Grid::checkAnswer(string contestant_answer)
     if(contestant_answer == answer)
         return true;
     return false;
-};
+}
+void Grid::setIsDouble(bool is_double)
+{
+    this->is_double = is_double;
+}

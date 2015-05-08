@@ -19,6 +19,7 @@ class Jeopardy
                    player2,
                    player3;
         static int scoreboard[3];
+        int counter;
         void initGrid();
 
     public:
@@ -79,5 +80,15 @@ class Jeopardy
         // Preconditions: isGameOver() is true
         // Postconditions: ---
         //************************************************************************
+        //************************************************************************
+        bool isDoubleJeopardy();
+        // Summary: checks if the grid is double jeopardy
+        // Preconditions:
+        // Postconditions:
+        //************************************************************************
+        void dailyDouble();
+        void finalJeopardy();
+
+
 };
 #endif // JEOPARDY_H_INCLUDED

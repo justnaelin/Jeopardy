@@ -18,6 +18,7 @@ class Grid
         string question,
                answer,
                grid_value;
+        bool is_double;
     public:
         //************************************************************************
         Grid();
@@ -110,5 +111,7 @@ class Grid
         // Postconditions: it has been initialized
         // Preconditions: returns grid_value
         //************************************************************************
+        bool getIsDouble() const {return is_double;}
+        void setIsDouble(bool is_double);
 };
 #endif // GRID_H_INCLUDED

@@ -12,7 +12,6 @@
 
 Contestant::Contestant()
 {
-    score = 0;
     wager = 0;
     id = 0;
     contestant_answer = "";
@@ -22,7 +21,6 @@ Contestant::Contestant()
 Contestant::Contestant(int id)
 {
     this->id = id;
-    score = 0;
     wager = 0;
     contestant_answer = "";
     row = 1;
@@ -30,7 +28,7 @@ Contestant::Contestant(int id)
 }
 void Contestant::setWager(int wager)
 {
-    assert(wager <= score || wager >= 0);
+    assert(wager >= 0);
     this->wager = wager;
 }
 void Contestant::setCol(int col)
