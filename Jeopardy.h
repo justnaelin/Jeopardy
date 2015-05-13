@@ -75,12 +75,6 @@ class Jeopardy
         // Postconditions: ---
         //************************************************************************
         //************************************************************************
-        void displayWinner(int id);
-        // Summary: Displays the player who won
-        // Preconditions: isGameOver() is true
-        // Postconditions: ---
-        //************************************************************************
-        //************************************************************************
         bool isDoubleJeopardy();
         // Summary: checks if the grid is double jeopardy
         // Preconditions:

@@ -13,6 +13,8 @@
 #include <fstream>
 #include <ctime>
 #include <cstdlib>
+#include <unistd.h>
+#include <time.h>
 
 using namespace std;
 
@@ -22,8 +24,11 @@ Jeopardy::Jeopardy()
 {
     srand(time(NULL));
     // Set daily double
-    //board[(rand() % 5) + 1][rand() % 5].setIsDouble(true);
-    board[1][0].setIsDouble(true);
+    int r = rand() % 5 + 1;
+    sleep(1);
+    int c = rand() % 5 + 1;
+    board[r][c].setIsDouble(true);
+
 
     // Initialize players with IDs
     player1.setId(0);
@@ -71,6 +76,7 @@ void Jeopardy::displayBoard()
 
     for(int i = 0; i < 6; i++)
     {
+        cout << i << '\t';
         for(int j = 0; j < 5; j++)
              cout << board[i][j].getGridValue() << '\t';
         cout << endl;
@@ -120,8 +126,10 @@ void Jeopardy::runGame(Contestant player)
         displayBoard();
         do
         {
-            cout << "Select a row and column: \n";
+            cout << "Select a row and column (1-5): \n";
             cin >> row >> col;
+            col = col - 1;
+
         } while(board[row][col].isQuestionChosen());
         cin.ignore();
 
@@ -395,6 +403,9 @@ void Jeopardy::finalJeopardy()
         addToScoreboard(player3, (scoreboard[2] - player3.getWager()));
     }
 
-
-
+    if(isGameOver())
+    {
+        whoWon();
+        displayGameOver();
+    }
 }
