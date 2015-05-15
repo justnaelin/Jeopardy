@@ -106,5 +106,12 @@ class Jeopardy
         // Preconditions: Player's must have entered their answers
         // Postconditions: If they get the question right, points are added
         //************************************************************************
+        //************************************************************************
+        void deductFromScoreboard(Contestant player, int grid_point_value);
+        // Summary: Deducts the player's score to the scoreboard
+        // Preconditions: ---
+        // Postconditions: ---
+        //************************************************************************
+
 };
 #endif // JEOPARDY_H_INCLUDED

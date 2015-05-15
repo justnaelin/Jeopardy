@@ -174,7 +174,10 @@ void Jeopardy::runGame(Contestant player, int id)
                 addToScoreboard(player, grid_point_value);
             }
             else
+            {
                 cout << "Incorrect!\n";
+                cout << "Answer: " << board[row][col].getAnswer() << endl;
+            }
             counter++;
         }
         if(counter == 25)
@@ -186,6 +189,10 @@ void Jeopardy::runGame(Contestant player, int id)
 void Jeopardy::addToScoreboard(Contestant player, int grid_point_value)
 {
     Jeopardy::scoreboard[player.getId()] += grid_point_value;
+}
+void Jeopardy::deductFromScoreboard(Contestant player, int grid_point_value)
+{
+    Jeopardy::scoreboard[player.getId()] -= grid_point_value;
 }
 void Jeopardy::initGrid()
 {
@@ -351,13 +358,9 @@ void Jeopardy::finalJeopardy()
     checkContestantsAnswers(player2, 1);
     checkContestantsAnswers(player3, 2);
 
-    // Checks if the game is over
-    if(isGameOver())
-    {
-        whoWon();
-        displayGameOver();
-        displayBoard();
-    }
+    // Display's the board, the winner, and GAME OVER
+    displayGameOver();
+
 }
 void Jeopardy::checkWager(Contestant& player, int id)
 {
@@ -384,6 +387,6 @@ void Jeopardy::checkContestantsAnswers(Contestant& player, int id)
     else
     {
         cout << "Player " << id + 1 << ": Incorrect!\n";
-        addToScoreboard(player, (scoreboard[id] - player.getWager()));
+        deductFromScoreboard(player, player.getWager());
     }
 }
