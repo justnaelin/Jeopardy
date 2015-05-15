@@ -127,9 +127,6 @@ void Jeopardy::runGame(Contestant player, int id)
         displayBoard();
         do
         {
-            cout << "Select a row and column (1-5): \n";
-            cin >> irow >> icol;
-
             //user input validation
             //user cannot enter characters or numbers over 5
             do
@@ -137,7 +134,7 @@ void Jeopardy::runGame(Contestant player, int id)
                  cout << "Select a row and column (1-5): \n";
                  cin >> irow >> icol;
 
-            }while((!isdigit(irow) || !isdigit(icol) || (irow > 48 && irow <= 53) || (icol > 48 && icol <=53)));
+            } while(!(irow > 48 && irow <= 53) || !(icol > 48 && icol <=53));
 
             // type cast the user input in order to use it throughout the rest of the code
             row = irow-'0'; //changes the char to an int
