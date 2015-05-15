@@ -115,20 +115,34 @@ void Jeopardy::whoWon()
 void Jeopardy::runGame(Contestant player)
 {
     int grid_point_value;
-    int row,
-        col,
-        wager;
+    char irow, // variables used to check user input
+         icol;
     string contestant_answer;
     bool isDailyDouble = false;
-
+    int row, // variables that are used in arrays and conditional staments
+        col,
+        wager;
     do
     {
         displayBoard();
         do
         {
             cout << "Select a row and column (1-5): \n";
-            cin >> row >> col;
-            col = col - 1;
+            cin >> irow >> icol;
+
+            //user input validation
+            //user cannot enter characters or numbers over 5
+            do
+            {
+                 cout << "Select a row and column (1-5): \n";
+                 cin >> irow >> icol;
+
+            }while((!isdigit(irow) || !isdigit(icol) || (irow > 48 && irow <= 53) || (icol > 48 && icol <=53)));
+
+            // type cast the user input in order to use it throughout the rest of the code
+            row = irow-'0'; //changes the char to an int
+            col = icol-'0'; // changes the char to an int
+            col = col - 1; // subtracts one to columns to get the right postion of the tile
 
         } while(board[row][col].isQuestionChosen());
         cin.ignore();
@@ -405,7 +419,6 @@ void Jeopardy::finalJeopardy()
 
     if(isGameOver())
     {
-        whoWon();
         displayGameOver();
     }
 }

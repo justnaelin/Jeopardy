@@ -28,7 +28,6 @@ Contestant::Contestant(int id)
 }
 void Contestant::setWager(int wager)
 {
-    assert(wager >= 0);
     this->wager = wager;
 }
 void Contestant::setCol(int col)
