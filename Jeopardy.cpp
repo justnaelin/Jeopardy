@@ -7,7 +7,6 @@
 
 #include "Jeopardy.h"
 #include "Grid.h"
-#include <cassert>
 #include <iostream>
 #include <string>
 #include <fstream>

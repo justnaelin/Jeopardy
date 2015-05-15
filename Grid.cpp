@@ -1,8 +1,9 @@
 //************************************************************************
 // Filename: Grid.cpp
-// Description:
-// Author: Miriam Flores & Naelin Aquino
-// Last modified:
+// Description: implements all the methods describe in the Grid header
+// file
+// Author: Miriam Flores & Naelin Aquino & Bianca Hernandez
+// Last modified:05-14-15
 //************************************************************************
 
 #include "Grid.h"
@@ -27,12 +28,10 @@ bool Grid::isQuestionChosen()
 }
 void Grid::setQuestion(string question)
 {
-    assert(question != "");
     this-> question = question;
 }
 void Grid::setAnswer(string answer)
 {
-    assert(answer != "");
     this->answer = answer;
 }
 void Grid::setGridValue(string grid_value)
@@ -50,7 +49,6 @@ void Grid::displayAnswer()
 }
 bool Grid::checkAnswer(string contestant_answer)
 {
-    assert(contestant_answer != "");
     if(contestant_answer == answer)
         return true;
     return false;

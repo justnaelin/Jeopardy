@@ -32,7 +32,7 @@ class Contestant
         //***********************************************************************************************************
 
         //***********************************************************************************************************
-        Contestant(int wager, int id, string contestant_answer, int row, int col);
+        Contestant(int id);
         // Description: overloaded constructor
         // PreCondition:
         // PostCondition: sets values to themselves

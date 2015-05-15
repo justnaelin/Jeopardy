@@ -3,9 +3,11 @@
 
 //************************************************************************
 // Class name: Grid
-// Description:
-// Authors: Naelin Aquino & Miriam Flores
-// Last modified:
+// Description: The grid class represents a tile in the Jeopardy Board
+// each grid tile contains a question and an answer, as well as a value from
+// 200 to 1000
+// Authors: Naelin Aquino & Miriam Flores & Bianca Hernandez
+// Last modified: 05-14-2015
 //************************************************************************
 
 #include <string>
@@ -111,7 +113,19 @@ class Grid
         // Postconditions: it has been initialized
         // Preconditions: returns grid_value
         //************************************************************************
+        //************************************************************************
         bool getIsDouble() const {return is_double;}
+        // Summary: returns the boolen valued of is_double
+        // variable
+        // Postconditions: it has been initialized to false
+        // Preconditions: returns grid_value
+        //************************************************************************
+        //************************************************************************
         void setIsDouble(bool is_double);
+        // Summary: sets a boolean value to the is_double
+        // variable
+        // Postcondition: it has been intitialized to 0
+        // Preconditions: sets the variable to a boolen value
+        //************************************************************************
 };
 #endif // GRID_H_INCLUDED
