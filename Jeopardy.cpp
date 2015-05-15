@@ -9,7 +9,6 @@
 
 #include "Jeopardy.h"
 #include "Grid.h"
-#include <cassert>
 #include <iostream>
 #include <string>
 #include <fstream>
@@ -29,7 +28,7 @@ Jeopardy::Jeopardy()
     int r = rand() % 5 + 1;
     sleep(1);
     int c = rand() % 5 + 1;
-    board[5][0].setIsDouble(true);
+    board[r][c].setIsDouble(true);
 
     // Initialize players with IDs
     player1.setId(0);
@@ -131,18 +130,18 @@ void Jeopardy::runGame(Contestant player, int id)
         displayBoard();
         do
         {
-            cout << "Select a row and column (1-5): \n";
+            cout << "Player " << id + 1 << " Select a row and column (1-5): \n";
             cin >> irow >> icol;
 
             //user input validation
             //user cannot enter characters or numbers over 5
-            do
+            /*do
             {
-                 cout << "Select a row and column (1-5): \n";
+                 cout << "Player " << id + 1 << " Select a row and column (1-5): \n";
                  cin >> irow >> icol;
 
             }while((!isdigit(irow) || !isdigit(icol) || (irow > 48 && irow <= 53) || (icol > 48 && icol <=53)));
-
+            */
             // type cast the user input in order to use it throughout the rest of the code
             row = irow-'0'; //changes the char to an int
             col = icol-'0'; // changes the char to an int
@@ -375,8 +374,8 @@ void Jeopardy::checkWager(Contestant& player, int id)
             cout << "Wager must be at least 100.\n";
 
     } while (wager < 100);
-    cin.ignore();
     player.setWager(wager);
+    cin.ignore();
 }
 void Jeopardy::checkContestantsAnswers(Contestant& player, int id)
 {

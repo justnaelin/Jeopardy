@@ -5,23 +5,22 @@
 	<iostream>
 	<cassert>
 
-1431125659 /home/miriam/Jeopardy/Contestant.h
+1431672395 /home/miriam/Jeopardy/Contestant.h
 	<string>
 
-1431125005 source:/home/miriam/Jeopardy/Grid.cpp
+1431672270 source:/home/miriam/Jeopardy/Grid.cpp
 	"Grid.h"
 	"Contestant.h"
 	<iostream>
 	<cassert>
 
-1431118829 /home/miriam/Jeopardy/Grid.h
+1431672256 /home/miriam/Jeopardy/Grid.h
 	<string>
 	"Contestant.h"
 
-1431653464 source:/home/miriam/Jeopardy/Jeopardy.cpp
+1431672359 source:/home/miriam/Jeopardy/Jeopardy.cpp
 	"Jeopardy.h"
 	"Grid.h"
-	<cassert>
 	<iostream>
 	<string>
 	<fstream>
@@ -77,29 +76,26 @@
 	<string>
 	<fstream>
 
-1431536781 source:/home/naelin/Repositories/Jeopardy/Contestant.cpp
+1431710911 source:/home/naelin/Repositories/Jeopardy/Contestant.cpp
 	"Contestant.h"
 	"Grid.h"
-	<iostream>
-	<cassert>
 
-1431363290 /home/naelin/Repositories/Jeopardy/Contestant.h
+1431712127 /home/naelin/Repositories/Jeopardy/Contestant.h
 	<string>
 
-1431363290 /home/naelin/Repositories/Jeopardy/Grid.h
+1431712067 /home/naelin/Repositories/Jeopardy/Grid.h
 	<string>
 	"Contestant.h"
 
-1431363290 source:/home/naelin/Repositories/Jeopardy/Grid.cpp
+1431712145 source:/home/naelin/Repositories/Jeopardy/Grid.cpp
 	"Grid.h"
 	"Contestant.h"
 	<iostream>
 	<cassert>
 
-1431653327 source:/home/naelin/Repositories/Jeopardy/Jeopardy.cpp
+1431713118 source:/home/naelin/Repositories/Jeopardy/Jeopardy.cpp
 	"Jeopardy.h"
 	"Grid.h"
-	<cassert>
 	<iostream>
 	<string>
 	<fstream>
@@ -108,11 +104,11 @@
 	<unistd.h>
 	<time.h>
 
-1431536781 /home/naelin/Repositories/Jeopardy/Jeopardy.h
+1431710198 /home/naelin/Repositories/Jeopardy/Jeopardy.h
 	"Grid.h"
 	"Contestant.h"
 
-1430759765 source:/home/naelin/Repositories/Jeopardy/JeopardyDriver.cpp
+1431712939 source:/home/naelin/Repositories/Jeopardy/JeopardyDriver.cpp
 	"Jeopardy.h"
 	<iostream>
 
