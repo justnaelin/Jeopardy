@@ -22,107 +22,93 @@ class Contestant
         string contestant_answer;
 
     public:
-        // Constructors
-
+    // Constructors
         //***********************************************************************************************************
         Contestant();
-        // Description:
-        // PreCondition:
-        // PostCondition:
+        // Summary: The constructor that initializes the contestant
+        // Preconditions: ---
+        // Postconditions: contestant is initialized
         //
         //***********************************************************************************************************
-
         //***********************************************************************************************************
-        Contestant(int id);
-        // Description:
-        // PreCondition:
-        // PostCondition:
+        Contestant(int wager, int id, string contestant_answer, int row, int col);
+        // Summary: overloaded constructor
+        // Preconditions: ---
+        // Postconditions: sets values to themselves
         //
         //***********************************************************************************************************
-
-        // Accessor Methods
-
+    // Accessor Methods
         //***********************************************************************************************************
         int getWager()const {return wager;}
-        // Description:
-        // PreCondition:
-        // PostCondition:
+        // Summary: it returns the variable wager
+        // Preconditions: wager is greater than 0 && less than score
+        // Postconditions: wager is returned
         //
         //***********************************************************************************************************
-
         //***********************************************************************************************************
         int getId()const {return id;}
-        // Description:
-        // PreCondition:
-        // PostCondition:
+        // Summary: returns the variable id
+        // Preconditions: id > 0 && id < 4
+        // Postconditions: id is return with it's value
         //
         //***********************************************************************************************************
-
         //***********************************************************************************************************
         int getRow()const {return row;}
-        // Description:
-        // PreCondition:
-        // PostCondition:
+        // Summary: returns the value of the variable row
+        // Preconditions: row > 0 && row < 6
+        // Postconditions: the value of row is returned
         //
         //***********************************************************************************************************
-
         //***********************************************************************************************************
         int getCol()const {return col;}
-        // Description:
-        // PreCondition:
-        // PostCondition:
+        // Summary: returns the value of the variable col
+        // Preconditions: col >= 0 && col < 5
+        // Postconditions: the value of col is returned
         //
         //***********************************************************************************************************
-
-        // Mutator Methods
-        //***********************************************************************************************************
-        void setRow(int row);
-        // Description: set Row
-        // PreCondition:
-        // PostCondition:
-        //
-        //***********************************************************************************************************
-
-        //***********************************************************************************************************
-        void setCol(int col);
-        // Description:
-        // PreCondition:
-        // PostCondition:
-        //
-        //***********************************************************************************************************
-
-        //***********************************************************************************************************
-        void setWager(int wager);
-        // Description:
-        // PostCondition:
-        // PreCondition:
-        //
-        //***********************************************************************************************************
-
-        //***********************************************************************************************************
-        void setId(int id);
-        // Description:
-        // PostCondition:
-        // Precondition:
-        //
-        //***********************************************************************************************************
-
         //***********************************************************************************************************
         string getContestantAnswer() const {return contestant_answer;}
-        // Description:
-        // PostCondition:
-        // PreCondition:
+        // Summary: returns the value contestant_answer
+        // Postconditions: contestant answer != " "
+        // Preconditions: the contestant value is returned
         //
         //***********************************************************************************************************
-
+    // Mutator Methods
+        //***********************************************************************************************************
+        void setRow(int row);
+        // Summary: sets the integer value into the variable row
+        // PreCondition: row > 0 && row < 6
+        // PostCondition: an integer value is assigned in the variable row
+        //
+        //***********************************************************************************************************
+        //***********************************************************************************************************
+        void setCol(int col);
+        // Summary: sets the integer value into the variable col
+        // PreCondition: col >=0 && col < 5
+        // PostCondition: an integer value is assigned in the variable col
+        //
+        //***********************************************************************************************************
+        //***********************************************************************************************************
+        void setWager(int wager);
+        // Summary: it sets and integer value into the variable wager
+        // PostCondition: wager >= 0 && wager < contestant score
+        // PreCondition: an integer value is assigned to the variable wager
+        //
+        //***********************************************************************************************************
+        //***********************************************************************************************************
+        void setId(int id);
+        // Summary: it sets the integer value between 1-3 into the variable id
+        // Postconditions: id > 0 && id < 4
+        // Preconditions: the integer value is assigned to the variable id
+        //
+        //***********************************************************************************************************
         //***********************************************************************************************************
         void setContestantAnswer(string contestant_answer);
-        // Description:
-        // PostCondition:
-        // PreCondition:
+        // Summary: is sets a string to the variable contestant_answer
+        // Postconditions: contestant_answer != " "
+        // Preconditions: the string input is assigned to the variable contestant_answer
         //
         //***********************************************************************************************************
-
 };
 
 #endif // CONTESTANT_H_INCLUDED

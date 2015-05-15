@@ -8,8 +8,6 @@
 
 #include "Contestant.h"
 #include "Grid.h"
-#include <iostream>
-#include <cassert>
 
 Contestant::Contestant()
 {

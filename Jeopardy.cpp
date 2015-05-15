@@ -4,7 +4,7 @@
 // and Final Jeopardy. It keeps track of how many questions have been
 // selected. Runs the entire game.
 // Author: Naelin Aquino & Miriam Flores
-// Last modified:
+// Last modified: 05-15-15
 //************************************************************************
 
 #include "Jeopardy.h"
@@ -107,6 +107,7 @@ void Jeopardy::whoWon()
         if(Jeopardy::scoreboard[i] > Jeopardy::scoreboard[highest_score])
             highest_score = i;
 
+    // Display winner
     if(highest_score == 0)
         cout << "Player 1 Wins!\n";
     else if(highest_score == 1)
@@ -116,21 +117,36 @@ void Jeopardy::whoWon()
 }
 void Jeopardy::runGame(Contestant player, int id)
 {
-    int grid_point_value,
-        row,
-        col,
-        wager;
+
+    int grid_point_value;
+    char irow, // variables used to check user input
+         icol;
     string contestant_answer;
     bool isDailyDouble = false;
-
+    int row, // variables that are used in arrays and conditional staments
+        col,
+        wager;
     do
     {
         displayBoard();
         do
         {
-            cout << "Player " << id + 1 << ": Select a row and column (1-5): \n";
-            cin >> row >> col;
-            col = col - 1;
+            cout << "Select a row and column (1-5): \n";
+            cin >> irow >> icol;
+
+            //user input validation
+            //user cannot enter characters or numbers over 5
+            do
+            {
+                 cout << "Select a row and column (1-5): \n";
+                 cin >> irow >> icol;
+
+            }while((!isdigit(irow) || !isdigit(icol) || (irow > 48 && irow <= 53) || (icol > 48 && icol <=53)));
+
+            // type cast the user input in order to use it throughout the rest of the code
+            row = irow-'0'; //changes the char to an int
+            col = icol-'0'; // changes the char to an int
+            col = col - 1; // subtracts one to columns to get the right postion of the tile
 
         } while(board[row][col].isQuestionChosen());
         cin.ignore();
@@ -167,6 +183,7 @@ void Jeopardy::runGame(Contestant player, int id)
         }
         if(counter == 25)
             finalJeopardy();
+      // While their answer is right, keeping asking questions
     } while(isDailyDouble == false && board[player.getRow()][player.getCol()].checkAnswer(player.getContestantAnswer()));
 
 }
@@ -277,14 +294,17 @@ void Jeopardy::dailyDouble()
         grid_point_value;
     string contestant_answer;
 
+    // Checks if the wager is within bounds
     checkWager(player1, 0);
     checkWager(player2, 1);
     checkWager(player3, 2);
 
+    // Sets that question to an X and gets the point value
     grid_point_value = stoi(board[player1.getRow()][player1.getCol()].getGridValue()); // Converts the the string grid-value to an int
     board[player1.getRow()][player1.getCol()].setGridValue("X");
     board[player1.getRow()][player1.getCol()].displayQuestion();
 
+    // Gets each player's answers
     cout << "Player 1: Enter your answer: \n";
     getline(cin, contestant_answer);
     player1.setContestantAnswer(contestant_answer);
@@ -311,7 +331,7 @@ void Jeopardy::finalJeopardy()
 
     cout << "    FINAL JEOPARDY!!!!    \n";
 
-    // TODO: Revise this to be specific to Final Jeopardy
+    // Checks if each player's wager is within bounds
     checkWager(player1, 0);
     checkWager(player2, 1);
     checkWager(player3, 2);
@@ -330,7 +350,7 @@ void Jeopardy::finalJeopardy()
     getline(cin, contestant_answer);
     player3.setContestantAnswer(contestant_answer);
 
-    // TODO: Revise this to be specific to Final Jeopardy
+    // Checks if their answers are correct, then proceed to add points
     checkContestantsAnswers(player1, 0);
     checkContestantsAnswers(player2, 1);
     checkContestantsAnswers(player3, 2);

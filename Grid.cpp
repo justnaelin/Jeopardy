@@ -8,7 +8,6 @@
 #include "Grid.h"
 #include "Contestant.h"
 #include <iostream>
-#include <cassert>
 
 using namespace std;
 
