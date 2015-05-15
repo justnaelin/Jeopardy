@@ -22,19 +22,19 @@ int Jeopardy::scoreboard[3] = {0, 0, 0};
 
 Jeopardy::Jeopardy()
 {
+    // Set daily double to a random tile
     srand(time(NULL));
-    // Set daily double
     int r = rand() % 5 + 1;
     sleep(1);
     int c = rand() % 5 + 1;
-    board[r][c].setIsDouble(true);
-
+    board[5][0].setIsDouble(true);
 
     // Initialize players with IDs
     player1.setId(0);
     player2.setId(1);
     player3.setId(2);
 
+    // Counter represents the number of questions selected
     counter = 0;
 
     // Initialize top row of Jeopardy grid to numbers 1-5
@@ -112,10 +112,10 @@ void Jeopardy::whoWon()
     else if(highest_score == 2)
         cout << "Player 3 Wins!\n";
 }
-void Jeopardy::runGame(Contestant player)
+void Jeopardy::runGame(Contestant player, int id)
 {
-    int grid_point_value;
-    int row,
+    int grid_point_value,
+        row,
         col,
         wager;
     string contestant_answer;
@@ -126,13 +126,14 @@ void Jeopardy::runGame(Contestant player)
         displayBoard();
         do
         {
-            cout << "Select a row and column (1-5): \n";
+            cout << "Player " << id + 1 << ": Select a row and column (1-5): \n";
             cin >> row >> col;
             col = col - 1;
 
         } while(board[row][col].isQuestionChosen());
         cin.ignore();
 
+        // Checks if they selected the Daily Double tile
         if(board[row][col].getIsDouble())
         {
             player1.setRow(row);
@@ -140,6 +141,7 @@ void Jeopardy::runGame(Contestant player)
             dailyDouble();
             isDailyDouble = true;
         }
+        // Run game as usual
         else
         {
             player.setRow(row);
@@ -151,6 +153,7 @@ void Jeopardy::runGame(Contestant player)
             cout << "Enter your answer: \n";
             getline(cin, contestant_answer);
             player.setContestantAnswer(contestant_answer);
+
             if(board[player.getRow()][player.getCol()].checkAnswer(player.getContestantAnswer()))
             {
                 cout << "Correct!\n";
@@ -174,10 +177,10 @@ void Jeopardy::initGrid()
     // Initialize questions & answers
     ifstream question_file, answer_file;
     string x, y;
-        // TODO: Set all the answers to lowercase
+
     for(int i = 0; i < 5; i++)
     {
-        if(i == 0)
+        if(i == 0) // Category 1
         {
             question_file.open("Category1.txt");
             answer_file.open("Category1Answers.txt");
@@ -192,7 +195,7 @@ void Jeopardy::initGrid()
             question_file.close();
             answer_file.close();
         }
-        if(i == 1)
+        if(i == 1) // Category 2
         {
             question_file.open("Category2.txt");
             answer_file.open("Category2Answers.txt");
@@ -207,7 +210,7 @@ void Jeopardy::initGrid()
             question_file.close();
             answer_file.close();
         }
-        if(i == 2)
+        if(i == 2) // Category 3
         {
             question_file.open("Category3.txt");
             answer_file.open("Category3Answers.txt");
@@ -222,7 +225,7 @@ void Jeopardy::initGrid()
             question_file.close();
             answer_file.close();
         }
-        if(i == 3)
+        if(i == 3) // Category 4
         {
             question_file.open("Category4.txt");
             answer_file.open("Category4Answers.txt");
@@ -237,7 +240,7 @@ void Jeopardy::initGrid()
             question_file.close();
             answer_file.close();
         }
-        if(i == 4)
+        if(i == 4) // Category 5
         {
             question_file.open("Category5.txt");
             answer_file.open("Category5Answers.txt");
@@ -259,32 +262,22 @@ void Jeopardy::startGame()
 
     do
     {
-        runGame(player1);
-        runGame(player2);
-        runGame(player3);
+        runGame(player1, 0);
+        runGame(player2, 1);
+        runGame(player3, 2);
 
     } while(!isGameOver());
 }
 void Jeopardy::dailyDouble()
 {
-    int wager,
-        row,
+    int row,
         col,
         grid_point_value;
     string contestant_answer;
 
-    cout << "Player 1 how much would you like to wager? \n";
-    cin >> wager;
-    cin.ignore();
-    player1.setWager(wager);
-    cout << "Player 2 how much would you like to wager? \n";
-    cin >> wager;
-    cin.ignore();
-    player2.setWager(wager);
-    cout << "Player 3 how much would you like to wager? \n";
-    cin >> wager;
-    cin.ignore();
-    player3.setWager(wager);
+    checkWager(player1, 0);
+    checkWager(player2, 1);
+    checkWager(player3, 2);
 
     grid_point_value = stoi(board[player1.getRow()][player1.getCol()].getGridValue()); // Converts the the string grid-value to an int
     board[player1.getRow()][player1.getCol()].setGridValue("X");
@@ -299,66 +292,32 @@ void Jeopardy::dailyDouble()
     cout << "Player 3: Enter your answer: \n";
     getline(cin, contestant_answer);
     player3.setContestantAnswer(contestant_answer);
-    if(board[player1.getRow()][player1.getCol()].checkAnswer(player1.getContestantAnswer()))
-    {
-        cout << "Player 1: Correct!\n";
-        addToScoreboard(player1, ((grid_point_value * 2) + player1.getWager()));
-    }
-    else
-    {
-        cout << "Player 1: Incorrect!\n";
-        addToScoreboard(player1, (scoreboard[0] - player1.getWager()));
-    }
-    if(board[player1.getRow()][player1.getCol()].checkAnswer(player2.getContestantAnswer()))
-    {
-        cout << "Player 2: Correct!\n";
-        addToScoreboard(player2, (grid_point_value * 2) + player2.getWager());
-    }
-    else
-    {
-        cout << "Player 2: Incorrect!\n";
-        addToScoreboard(player2, scoreboard[1] - player2.getWager());
-    }
-    if(board[player1.getRow()][player1.getCol()].checkAnswer(player3.getContestantAnswer()))
-    {
-        cout << "Player 3: Correct!\n";
-        addToScoreboard(player3, (grid_point_value * 2) + player3.getWager());
-    }
-    else
-    {
-        cout << "Player 3: Incorrect!\n";
-        addToScoreboard(player3, scoreboard[2] - player3.getWager());
-    }
+
+    // Checks all contestants' answers
+    checkContestantsAnswers(player1, 0);
+    checkContestantsAnswers(player2, 1);
+    checkContestantsAnswers(player3, 2);
+
+    displayBoard();
+
     counter++;
 }
 void Jeopardy::finalJeopardy()
 {
-    string answer,
+    string answer = "walter e disney", // Answer for Final Jeopardy
            contestant_answer;
-    int wager;
+
     cout << "    FINAL JEOPARDY!!!!    \n";
 
-    //answer for final jeopardy question
-    answer = "walter e disney";
+    // TODO: Revise this to be specific to Final Jeopardy
+    checkWager(player1, 0);
+    checkWager(player2, 1);
+    checkWager(player3, 2);
 
-    //ask each player for their wagers
-    cout << "Player 1 how much would you like to wager? \n";
-    cin >> wager;
-    cin.ignore();
-    player1.setWager(wager);
-    cout << "Player 2 how much would you like to wager? \n";
-    cin >> wager;
-    cin.ignore();
-    player2.setWager(wager);
-    cout << "Player 3 how much would you like to wager? \n";
-    cin >> wager;
-    cin.ignore();
-    player3.setWager(wager);
-
-      //final geopardy question
+    // Final Jeopardy question
     cout << "What does Wall-E stand for? \n";
 
-    //gets the players answers
+    // Sets players' answers
     cout << "Player 1: Enter your answer: \n";
     getline(cin, contestant_answer);
     player1.setContestantAnswer(contestant_answer);
@@ -369,43 +328,44 @@ void Jeopardy::finalJeopardy()
     getline(cin, contestant_answer);
     player3.setContestantAnswer(contestant_answer);
 
-    //checks who gets the points
-    if(player1.getContestantAnswer() == answer)
-    {
-        cout << "Player 1: Correct!\n";
-        addToScoreboard(player1, player1.getWager());
-    }
-    else
-    {
-        cout << "Player 2: Incorrect!\n";
-        addToScoreboard(player2, (scoreboard[0] - player2.getWager()));
-    }
-    //checks player 2 answers
-     if(player2.getContestantAnswer() == answer)
-    {
-        cout << "Player 2: Correct!\n";
-        addToScoreboard(player2, player2.getWager());
-    }
-    else
-    {
-        cout << "Player 3: Incorrect!\n";
-        addToScoreboard(player2, (scoreboard[1] - player2.getWager()));
-    }
-    //checks players 3 answers
-     if(player3.getContestantAnswer() == answer)
-    {
-        cout << "Player 3: Correct!\n";
-        addToScoreboard(player3, player3.getWager());
-    }
-    else
-    {
-        cout << "Player 1: Incorrect!\n";
-        addToScoreboard(player3, (scoreboard[2] - player3.getWager()));
-    }
+    // TODO: Revise this to be specific to Final Jeopardy
+    checkContestantsAnswers(player1, 0);
+    checkContestantsAnswers(player2, 1);
+    checkContestantsAnswers(player3, 2);
 
+    // Checks if the game is over
     if(isGameOver())
     {
         whoWon();
         displayGameOver();
+        displayBoard();
+    }
+}
+void Jeopardy::checkWager(Contestant& player, int id)
+{
+    int wager;
+    do
+    {
+        cout << "Player " << id + 1 << " how much would you like to wager? \n";
+        cin >> wager;
+
+        if(wager < 100)
+            cout << "Wager must be at least 100.\n";
+
+    } while (wager < 100);
+    cin.ignore();
+    player.setWager(wager);
+}
+void Jeopardy::checkContestantsAnswers(Contestant& player, int id)
+{
+    if(board[player.getRow()][player.getCol()].checkAnswer(player.getContestantAnswer()))
+    {
+        cout << "Player " << id + 1 << ":  Correct!\n";
+        addToScoreboard(player, player.getWager());
+    }
+    else
+    {
+        cout << "Player " << id + 1 << ": Incorrect!\n";
+        addToScoreboard(player, (scoreboard[id] - player.getWager()));
     }
 }

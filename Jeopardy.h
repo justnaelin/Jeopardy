@@ -55,7 +55,7 @@ class Jeopardy
         // Postconditions: ---
         //************************************************************************
         //************************************************************************
-        void runGame(Contestant player);
+        void runGame(Contestant player, int id);
         // Summary: Displays the grid, asks the player to pick a question, gets
         // the players answer, checks if the answer if correct
         // Preconditions: The grid is initialized, players are initialized
@@ -80,8 +80,31 @@ class Jeopardy
         // Preconditions:
         // Postconditions:
         //************************************************************************
+        //************************************************************************
         void dailyDouble();
+        // Summary: Runs the daily double
+        // Preconditions: The row and column must be daily double
+        // Postconditions:
+        //************************************************************************
+        //************************************************************************
         void finalJeopardy();
+        // Summary: Runs the final Jeopardy
+        // Preconditions: All questions must be chosen
+        // Postconditions:
+        //************************************************************************
+        //************************************************************************
+        void checkWager(Contestant& player, int id);
+        // Summary: Checks that the player's enter a wager amount within bounds
+        // Preconditions:
+        // Postconditions:
+        //************************************************************************
+        //************************************************************************
+        void checkContestantsAnswers(Contestant& player, int id);
+        // Summary: Checks the contestants answers to see if they are correct,
+        // then adds points to the scoreboard
+        // Preconditions:
+        // Postconditions:
+        //************************************************************************
 
 
 };

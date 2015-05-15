@@ -28,7 +28,6 @@ Contestant::Contestant(int id)
 }
 void Contestant::setWager(int wager)
 {
-    assert(wager >= 0);
     this->wager = wager;
 }
 void Contestant::setCol(int col)
@@ -41,11 +40,9 @@ void Contestant::setRow(int row)
 }
 void Contestant::setId(int id)
 {
-    assert(id >= 0 || id < 3);
     this->id = id;
 }
 void Contestant::setContestantAnswer(string contestant_answer)
 {
-    assert(contestant_answer != "");
     this->contestant_answer = contestant_answer;
 }
