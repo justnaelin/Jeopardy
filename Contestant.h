@@ -3,9 +3,10 @@
 
 //************************************************************************
 // Class name: Contestant
-// Description:
+// Description: This class is in charge of holding each contestant's
+// attributes
 // Authors: Naelin Aquino, Miriam Flores, Bianca Hernandez
-// Last modified:
+// Last modified: 05-15-15
 //************************************************************************
 
 #include <string>

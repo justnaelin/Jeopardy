@@ -1,6 +1,8 @@
 //************************************************************************
 // Filename: Jeopardy.cpp
-// Description:
+// Description: Implements the Jeopardy class. It checks for Daily Double
+// and Final Jeopardy. It keeps track of how many questions have been
+// selected. Runs the entire game.
 // Author: Naelin Aquino & Miriam Flores
 // Last modified:
 //************************************************************************

@@ -1,8 +1,9 @@
 //************************************************************************
 // Filename: Contestant.cpp
-// Description:
+// Description: Implements the accessors and mutators of the Contestant
+// class
 // Author: Naelin Aquino, Miriam Flores, & Bianca Hernandez
-// Last modified:
+// Last modified: 05-07-15
 //************************************************************************
 
 #include "Contestant.h"

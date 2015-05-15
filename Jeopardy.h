@@ -3,9 +3,10 @@
 
 //************************************************************************
 // Class name: Jeopardy
-// Description:
-// Authors: Naelin Aquino
-// Last modified:
+// Description: This class runs the entire game. It handles each player's
+// turn in the game, the scoreboard, and updating the Jeopardy board
+// Authors: Naelin Aquino & Miriam Flores
+// Last modified: 05-15-14
 //************************************************************************
 
 #include "Grid.h"
@@ -76,36 +77,34 @@ class Jeopardy
         //************************************************************************
         //************************************************************************
         bool isDoubleJeopardy();
-        // Summary: checks if the grid is double jeopardy
-        // Preconditions:
-        // Postconditions:
+        // Summary: Checks if the grid is double jeopardy
+        // Preconditions: A random row and column is set to double Jeopardy
+        // Postconditions: ---
         //************************************************************************
         //************************************************************************
         void dailyDouble();
         // Summary: Runs the daily double
         // Preconditions: The row and column must be daily double
-        // Postconditions:
+        // Postconditions: ---
         //************************************************************************
         //************************************************************************
         void finalJeopardy();
         // Summary: Runs the final Jeopardy
         // Preconditions: All questions must be chosen
-        // Postconditions:
+        // Postconditions: ---
         //************************************************************************
         //************************************************************************
         void checkWager(Contestant& player, int id);
         // Summary: Checks that the player's enter a wager amount within bounds
-        // Preconditions:
-        // Postconditions:
+        // Preconditions: A player must have selected a daily double tile
+        // Postconditions: ---
         //************************************************************************
         //************************************************************************
         void checkContestantsAnswers(Contestant& player, int id);
         // Summary: Checks the contestants answers to see if they are correct,
         // then adds points to the scoreboard
-        // Preconditions:
-        // Postconditions:
+        // Preconditions: Player's must have entered their answers
+        // Postconditions: If they get the question right, points are added
         //************************************************************************
-
-
 };
 #endif // JEOPARDY_H_INCLUDED

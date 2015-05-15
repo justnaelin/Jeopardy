@@ -1,8 +1,8 @@
 //************************************************************************
 // Filename: JeopardyDriver.cpp
-// Description:
+// Description: Creates a Jeopardy game and runs it
 // Author: Naelin Aquino & Miriam Flores
-// Last modified:
+// Last modified: 05-15-15
 //************************************************************************
 
 
