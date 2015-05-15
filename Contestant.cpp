@@ -40,11 +40,9 @@ void Contestant::setRow(int row)
 }
 void Contestant::setId(int id)
 {
-    assert(id >= 0 || id < 3);
     this->id = id;
 }
 void Contestant::setContestantAnswer(string contestant_answer)
 {
-    assert(contestant_answer != "");
     this->contestant_answer = contestant_answer;
 }
